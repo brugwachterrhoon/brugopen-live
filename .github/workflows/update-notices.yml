@@ -1,0 +1,36 @@
+name: Update PIN BAS notices
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch Port Information Notices
+        run: python scripts/fetch_pin_bas.py
+
+      - name: Commit changed notices
+        run: |
+          if git diff --quiet -- notices.json; then
+            echo "No notice changes"
+            exit 0
+          fi
+          git config user.name "brugopen-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add notices.json
+          git commit -m "Update PIN BAS notices"
+          git push
