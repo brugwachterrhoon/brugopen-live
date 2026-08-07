@@ -16,6 +16,7 @@ BRIDGES = {
     "botlekbrug": "Botlekbrug",
     "spijkenisserbrug": "Spijkenisserbrug",
     "alblasserdamsebrug": "Alblasserdamsebrug",
+    "papendrechtsebrug": "Papendrechtsebrug",
 }
 MONTHS = {
     "jan":1,"januari":1,"january":1,
