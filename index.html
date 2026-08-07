@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brugopeningen</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      color: #fff;
+    }
+
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background: #172433;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    #today {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .legend {
+      color: #222;
+      display: flex;
+      gap: 35px;
+      padding: 22px 8px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+    }
+
+    .green-dot { background: #16863a; }
+    .red-dot { background: #d62f2f; }
+
+    .bridges {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .bridge {
+      min-width: 0;
+    }
+
+    .bridge-title {
+      background: #172433;
+      text-align: center;
+      padding: 12px 6px;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 7px;
+    }
+
+    .slot {
+      min-height: 56px;
+      background: #16863a;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .split {
+      padding: 0;
+    }
+
+    .pleasure,
+    .commercial {
+      height: 56px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .pleasure { background: #d7352c; }
+    .commercial { background: #16863a; }
+
+    .badge {
+      width: 25px;
+      height: 25px;
+      border: 2px solid rgba(255,255,255,.75);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .bridges { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: flex-start; }
+      .legend { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <header>
+    <h1>Brugopeningen</h1>
+    <div id="today"></div>
+  </header>
+
+  <div class="legend">
+    <span><span class="dot green-dot"></span>Groen: opening mogelijk</span>
+    <span><span class="dot red-dot"></span>Rood: geen opening</span>
+  </div>
+
+  <div class="bridges">
+
+    <div class="bridge">
+      <div class="bridge-title">Alblasserdamsebrug</div>
+      <div id="alblasserdamsebrug"></div>
+    </div>
+
+    <div class="bridge">
+      <div class="bridge-title">Botlekbrug</div>
+      <div id="botlekbrug"></div>
+    </div>
+
+    <div class="bridge">
+      <div class="bridge-title">Spijkenisserbrug</div>
+      <div id="spijkenisserbrug"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const times = [
+    "19:15","19:30","19:45","20:00","20:15",
+    "20:30","20:45","21:00","21:15","21:30"
+  ];
+
+  function normalSlot(time) {
+    return `<div class="slot">${time}</div>`;
+  }
+
+  function splitSlot(time) {
+    return `
+      <div class="slot split">
+        <div class="pleasure">
+          <span class="badge">P</span>${time}
+        </div>
+        <div class="commercial">
+          <span class="badge">B</span>${time}
+        </div>
+      </div>`;
+  }
+
+  function buildBridge(id, restrictedTimes = []) {
+    const box = document.getElementById(id);
+
+    box.innerHTML = times.map(time =>
+      restrictedTimes.includes(time)
+        ? splitSlot(time)
+        : normalSlot(time)
+    ).join("");
+  }
+
+  buildBridge("alblasserdamsebrug");
+
+  buildBridge("botlekbrug", [
+    "19:30","20:00","20:30","21:00","21:30"
+  ]);
+
+  buildBridge("spijkenisserbrug", [
+    "19:30","20:00","20:30","21:00","21:30"
+  ]);
+
+  const now = new Date();
+
+  const dateText = new Intl.DateTimeFormat("nl-NL", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  }).format(now);
+
+  document.getElementById("today").textContent =
+    "VANDAAG " + dateText;
+</script>
+
+</body>
+</html>
