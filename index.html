@@ -8,7 +8,7 @@
     * { box-sizing: border-box; }
     :root { --navy:#172433; --green:#16863a; --red:#d7352c; --bg:#f2f2f2; }
     body { margin:0; font-family:Arial,sans-serif; background:var(--bg); color:#fff; }
-    .page { max-width:1400px; margin:0 auto; padding:20px; }
+    .page { max-width:1600px; margin:0 auto; padding:20px; }
     header { background:var(--navy); padding:18px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
     h1 { margin:0; font-size:34px; }
     #today { font-size:20px; font-weight:bold; }
@@ -17,7 +17,7 @@
     .green-dot { background:var(--green); } .red-dot { background:var(--red); }
     .key { display:inline-flex; width:25px; height:25px; align-items:center; justify-content:center; background:var(--navy); color:#fff; font-size:14px; margin-right:6px; }
     .meta { color:#444; font-size:14px; padding:0 8px 14px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
-    .bridges { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; align-items:start; }
+    .bridges { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; align-items:start; }
     .bridge-column { min-width:0; }
     .bridge-title { position:sticky; top:0; z-index:10; background:var(--navy); text-align:center; padding:12px 6px; font-size:20px; font-weight:bold; margin-bottom:7px; box-shadow:0 2px 5px rgba(0,0,0,.14); }
     .slot { min-height:56px; margin-bottom:7px; display:flex; align-items:stretch; justify-content:center; font-size:18px; font-weight:bold; border-radius:2px; overflow:hidden; position:relative; }
@@ -27,7 +27,8 @@
     .notice-tag { position:absolute; right:6px; top:5px; background:rgba(23,36,51,.82); color:#fff; border:1px solid rgba(255,255,255,.65); border-radius:3px; padding:2px 5px; font-size:10px; line-height:1; letter-spacing:.2px; z-index:2; }
     .empty { color:#333; background:#fff; border:1px solid #ddd; padding:22px; text-align:center; font-weight:bold; }
     .source-note { color:#555; font-size:13px; line-height:1.4; padding:12px 8px 0; }
-    @media(max-width:900px){ .bridges{grid-template-columns:1fr;} header{flex-direction:column;align-items:flex-start;} .legend{gap:10px 18px;} .bridge-title{top:0;} }
+    @media(max-width:1100px){ .bridges{grid-template-columns:repeat(2,1fr);} }
+    @media(max-width:700px){ .bridges{grid-template-columns:1fr;} header{flex-direction:column;align-items:flex-start;} .legend{gap:10px 18px;} .bridge-title{top:0;} }
   </style>
 </head>
 <body>
@@ -47,8 +48,9 @@
     <section class="bridge-column"><div class="bridge-title">Alblasserdamsebrug</div><div id="alblasserdamsebrug"></div></section>
     <section class="bridge-column"><div class="bridge-title">Botlekbrug</div><div id="botlekbrug"></div></section>
     <section class="bridge-column"><div class="bridge-title">Spijkenisserbrug</div><div id="spijkenisserbrug"></div></section>
+    <section class="bridge-column"><div class="bridge-title">Papendrechtsebrug</div><div id="papendrechtsebrug"></div></section>
   </div>
-  <div class="source-note">Basisregelingen 2026: Botlekbrug en Spijkenisserbrug volgens BAS 080/2026. Alblasserdamsebrug volgens de actuele gepubliceerde bedienvensters. Actuele BAS/PIN-stremmingen en tussentijdse openingen worden iedere 5 minuten verwerkt. Tijdvakken die door zo'n bericht zijn aangepast krijgen het label BAS/PIN.</div>
+  <div class="source-note">Basisregelingen 2026: Botlekbrug en Spijkenisserbrug volgens BAS 080/2026. Alblasserdamsebrug volgens de actuele gepubliceerde bedienvensters. Papendrechtsebrug: tijdens de renovatie is reguliere brugopening niet beschikbaar; alleen een officieel aangekondigd passagevenster wordt via BAS/PIN groen weergegeven. Lage scheepvaart die zonder brugopening onder het vaste deel kan doorvaren valt buiten deze openingstijdenweergave. Actuele BAS/PIN-stremmingen en tussentijdse openingen worden iedere 5 minuten verwerkt. Tijdvakken die door zo'n bericht zijn aangepast krijgen het label BAS/PIN.</div>
 </div>
 <script>
 const REFRESH_MS=5*60*1000; let noticeOverrides=[];
@@ -57,13 +59,14 @@ function roundedStart(now){return Math.ceil((now.getHours()*60+now.getMinutes())
 function botlekStatus(t,date){let p=t>=mins(6,0)&&t<=mins(22,0)&&(t%60===15||t%60===45),b=true;if(isWeekday(date)&&(inRange(t,mins(6,30),mins(9,30))||inRange(t,mins(15,30),mins(18,30))))p=false;return{p,b,notice:false}}
 function spijkenisserStatus(t,date){let p=t>=mins(6,0)&&t<=mins(22,0)&&t%60===30,b=true;if(isWeekday(date)&&(inRange(t,mins(6,30),mins(9,30))||inRange(t,mins(15,30),mins(18,30))))p=false;return{p,b,notice:false}}
 function alblasserdamseStatus(t,date){let open=false;if(inRange(t,0,mins(7,15)))open=true;if(isWeekend(date)&&inRange(t,mins(9,0),mins(9,15)))open=true;if(isWeekday(date)&&inRange(t,mins(9,15),mins(9,30)))open=true;for(let h=10;h<=14;h++)if(inRange(t,mins(h,0),mins(h,15)))open=true;if(isWeekend(date)&&inRange(t,mins(15,0),mins(15,15)))open=true;if(inRange(t,mins(16,0),mins(16,15)))open=true;if(isWeekend(date)&&inRange(t,mins(18,0),mins(18,15)))open=true;if(isWeekday(date)&&inRange(t,mins(18,15),mins(18,30)))open=true;if(inRange(t,mins(19,0),1440))open=true;return{p:open,b:open,notice:false}}
+function papendrechtseStatus(t,date){return{p:false,b:false,notice:false}}
 function applyOverrides(bridge,t,date,status){const day=`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;let s={...status},matched=[];noticeOverrides.filter(o=>o.bridge===bridge&&day>=o.startDate&&day<=o.endDate&&inRange(t,o.startMin,o.endMin)).sort((a,b)=>(a.priority||0)-(b.priority||0)).forEach(o=>{matched.push(o);if(typeof o.open==='boolean')s={...s,p:o.open,b:o.open};if(typeof o.p==='boolean')s.p=o.p;if(typeof o.b==='boolean')s.b=o.b});if(matched.length){const active=matched[matched.length-1];s.notice=true;s.source=active.source||'';s.noticeOpen=active.open===true}return s}
 function escAttr(v){return String(v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function part(label,time,open){return `<div class="part ${open?'open':'closed'}"><span class="badge">${label}</span>${time}</div>`}
 function slot(time,status){const tt=timeText(time),tag=status.notice?`<span class="notice-tag" title="Actueel BAS/PIN-bericht${status.source?' · '+escAttr(status.source):''}">BAS/PIN</span>`:'';if(status.p===status.b)return `<div class="slot">${tag}<div class="part ${status.p?'open':'closed'}">${tt}</div></div>`;return `<div class="slot">${tag}${part('P',tt,status.p)}${part('B',tt,status.b)}</div>`}
 function renderBridge(id,name,fn,times,date){const box=document.getElementById(id);if(!times.length){box.innerHTML='<div class="empty">Voor vandaag zijn geen toekomstige kwartieren meer over.</div>';return}box.innerHTML=times.map(t=>slot(t,applyOverrides(name,t,date,fn(t,date)))).join('')}
 async function loadOverrides(){try{const r=await fetch(`notices.json?ts=${Date.now()}`,{cache:'no-store'});if(r.ok){const d=await r.json();if(Array.isArray(d))noticeOverrides=d}}catch(e){}}
-async function render(){await loadOverrides();const now=new Date(),times=remainingQuarterHours(now);renderBridge('alblasserdamsebrug','Alblasserdamsebrug',alblasserdamseStatus,times,now);renderBridge('botlekbrug','Botlekbrug',botlekStatus,times,now);renderBridge('spijkenisserbrug','Spijkenisserbrug',spijkenisserStatus,times,now);const dateText=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(now);document.getElementById('today').textContent=dateText;document.getElementById('checked').textContent=`Laatste herberekening ${pad(now.getHours())}:${pad(now.getMinutes())} · iedere 5 min`}
+async function render(){await loadOverrides();const now=new Date(),times=remainingQuarterHours(now);renderBridge('alblasserdamsebrug','Alblasserdamsebrug',alblasserdamseStatus,times,now);renderBridge('botlekbrug','Botlekbrug',botlekStatus,times,now);renderBridge('spijkenisserbrug','Spijkenisserbrug',spijkenisserStatus,times,now);renderBridge('papendrechtsebrug','Papendrechtsebrug',papendrechtseStatus,times,now);const dateText=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(now);document.getElementById('today').textContent=dateText;document.getElementById('checked').textContent=`Laatste herberekening ${pad(now.getHours())}:${pad(now.getMinutes())} · iedere 5 min`}
 render();setInterval(render,REFRESH_MS);
 </script>
 </body>
