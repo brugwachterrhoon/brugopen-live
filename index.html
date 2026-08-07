@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brugopeningen</title>
+  <title>Brugopeningen vandaag</title>
   <style>
     * { box-sizing: border-box; }
     :root { --navy:#172433; --green:#16863a; --red:#d7352c; --bg:#f2f2f2; }
@@ -11,7 +11,7 @@
     .page { max-width:1400px; margin:0 auto; padding:20px; }
     header { background:var(--navy); padding:18px 24px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
     h1 { margin:0; font-size:34px; }
-    #today { font-size:20px; font-weight:bold; text-transform:uppercase; }
+    #today { font-size:20px; font-weight:bold; }
     .legend { color:#222; display:flex; flex-wrap:wrap; gap:24px 35px; padding:18px 8px; font-size:18px; font-weight:bold; align-items:center; }
     .dot { width:16px; height:16px; border-radius:50%; display:inline-block; margin-right:8px; vertical-align:-2px; }
     .green-dot { background:var(--green); } .red-dot { background:var(--red); }
@@ -32,157 +32,36 @@
 <body>
 <div class="page">
   <header>
-    <h1>Brugopeningen</h1>
+    <h1>Brugopeningen vandaag</h1>
     <div id="today"></div>
   </header>
-
   <div class="legend">
     <span><span class="dot green-dot"></span>Groen: opening mogelijk</span>
     <span><span class="dot red-dot"></span>Rood: geen opening</span>
     <span><span class="key">P</span>Pleziervaart</span>
     <span><span class="key">B</span>Beroepsvaart</span>
   </div>
-
-  <div class="meta">
-    <span>Verlopen tijden verdwijnen automatisch.</span>
-    <span id="checked"></span>
-  </div>
-
+  <div class="meta"><span>Verlopen tijden verdwijnen automatisch.</span><span id="checked"></span></div>
   <div class="bridges">
-    <section class="bridge-column">
-      <div class="bridge-title">Alblasserdamsebrug</div>
-      <div id="alblasserdamsebrug"></div>
-    </section>
-    <section class="bridge-column">
-      <div class="bridge-title">Botlekbrug</div>
-      <div id="botlekbrug"></div>
-    </section>
-    <section class="bridge-column">
-      <div class="bridge-title">Spijkenisserbrug</div>
-      <div id="spijkenisserbrug"></div>
-    </section>
+    <section class="bridge-column"><div class="bridge-title">Alblasserdamsebrug</div><div id="alblasserdamsebrug"></div></section>
+    <section class="bridge-column"><div class="bridge-title">Botlekbrug</div><div id="botlekbrug"></div></section>
+    <section class="bridge-column"><div class="bridge-title">Spijkenisserbrug</div><div id="spijkenisserbrug"></div></section>
   </div>
-
-  <div class="source-note">
-    Basisregelingen 2026: Botlekbrug en Spijkenisserbrug volgens BAS 080/2026. Alblasserdamsebrug volgens de actuele gepubliceerde bedienvensters. De pagina rekent elke 5 minuten opnieuw en is voorbereid op afzonderlijke BAS/PIN-stremmingen en tussentijdse openingen.
-  </div>
+  <div class="source-note">Basisregelingen 2026: Botlekbrug en Spijkenisserbrug volgens BAS 080/2026. Alblasserdamsebrug volgens de actuele gepubliceerde bedienvensters. De pagina rekent elke 5 minuten opnieuw en is voorbereid op afzonderlijke BAS/PIN-stremmingen en tussentijdse openingen.</div>
 </div>
-
 <script>
-const REFRESH_MS = 5 * 60 * 1000;
-
-// Extra stremmingen kunnen hier worden toegevoegd of later uit een externe BAS/PIN-feed worden geladen.
-// Een override geldt bovenop het normale schema. Een uitzondering/opening binnen een stremming zet open:true.
-let noticeOverrides = [];
-
-function pad(n){ return String(n).padStart(2,'0'); }
-function mins(h,m){ return h*60+m; }
-function timeText(total){ return `${pad(Math.floor(total/60))}:${pad(total%60)}`; }
-function isWeekday(d){ const n=d.getDay(); return n>=1 && n<=5; }
-function isWeekend(d){ const n=d.getDay(); return n===0 || n===6; }
-function inRange(t,start,end){ return t>=start && t<end; }
-
-function roundedStart(now){
-  const current = now.getHours()*60 + now.getMinutes();
-  return Math.ceil(current/15)*15;
-}
-
-function remainingQuarterHours(now){
-  const start=roundedStart(now), out=[];
-  for(let t=start;t<24*60;t+=15) out.push(t);
-  return out;
-}
-
-function botlekStatus(t,date){
-  // Beroepsvaart: ieder kwartier mogelijk. Pleziervaart: :15 en :45, 06:00-22:00.
-  let p = t>=mins(6,0) && t<=mins(22,0) && (t%60===15 || t%60===45);
-  let b = true;
-  // BAS 080/2026: op werkdagen geen bediening pleziervaart in de spits.
-  if(isWeekday(date) && (inRange(t,mins(6,30),mins(9,30)) || inRange(t,mins(15,30),mins(18,30)))) p=false;
-  return {p,b};
-}
-
-function spijkenisserStatus(t,date){
-  // Beroepsvaart: ieder kwartier mogelijk. Pleziervaart: op het halve uur 06:00-22:00.
-  let p = t>=mins(6,0) && t<=mins(22,0) && t%60===30;
-  let b = true;
-  // BAS 080/2026: op werkdagen geen bediening pleziervaart in de spits.
-  if(isWeekday(date) && (inRange(t,mins(6,30),mins(9,30)) || inRange(t,mins(15,30),mins(18,30)))) p=false;
-  return {p,b};
-}
-
-function alblasserdamseStatus(t,date){
-  // Actuele bedienvensters; geen apart P/B-regime gepubliceerd, dus beide gelijk weergegeven.
-  let open=false;
-  if(inRange(t,mins(0,0),mins(7,15))) open=true;               // bij aanbod
-  if(isWeekend(date) && inRange(t,mins(9,0),mins(9,15))) open=true;
-  if(isWeekday(date) && inRange(t,mins(9,15),mins(9,30))) open=true;
-  for(let h=10;h<=14;h++) if(inRange(t,mins(h,0),mins(h,15))) open=true;
-  if(isWeekend(date) && inRange(t,mins(15,0),mins(15,15))) open=true;
-  if(inRange(t,mins(16,0),mins(16,15))) open=true;
-  if(isWeekend(date) && inRange(t,mins(18,0),mins(18,15))) open=true;
-  if(isWeekday(date) && inRange(t,mins(18,15),mins(18,30))) open=true;
-  if(inRange(t,mins(19,0),mins(24,0))) open=true;              // bij aanbod
-  return {p:open,b:open};
-}
-
-function applyOverrides(bridge,t,date,status){
-  const day=`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
-  let s={...status};
-  noticeOverrides
-    .filter(o=>o.bridge===bridge && day>=o.startDate && day<=o.endDate && inRange(t,o.startMin,o.endMin))
-    .sort((a,b)=>(a.priority||0)-(b.priority||0))
-    .forEach(o=>{
-      if(typeof o.open==='boolean') s={p:o.open,b:o.open};
-      if(typeof o.p==='boolean') s.p=o.p;
-      if(typeof o.b==='boolean') s.b=o.b;
-    });
-  return s;
-}
-
-function part(label,time,open){
-  return `<div class="part ${open?'open':'closed'}"><span class="badge">${label}</span>${time}</div>`;
-}
-
-function slot(time,status){
-  const tt=timeText(time);
-  if(status.p===status.b){
-    return `<div class="slot"><div class="part ${status.p?'open':'closed'}">${tt}</div></div>`;
-  }
-  return `<div class="slot">${part('P',tt,status.p)}${part('B',tt,status.b)}</div>`;
-}
-
-function renderBridge(id,bridgeName,statusFn,times,date){
-  const box=document.getElementById(id);
-  if(!times.length){ box.innerHTML='<div class="empty">Voor vandaag zijn geen toekomstige kwartieren meer over.</div>'; return; }
-  box.innerHTML=times.map(t=>slot(t,applyOverrides(bridgeName,t,date,statusFn(t,date)))).join('');
-}
-
-async function loadOverrides(){
-  try{
-    const r=await fetch(`notices.json?ts=${Date.now()}`,{cache:'no-store'});
-    if(r.ok){
-      const data=await r.json();
-      if(Array.isArray(data)) noticeOverrides=data;
-    }
-  }catch(e){ /* geen lokaal notices-bestand is toegestaan */ }
-}
-
-async function render(){
-  await loadOverrides();
-  const now=new Date();
-  const times=remainingQuarterHours(now);
-  renderBridge('alblasserdamsebrug','Alblasserdamsebrug',alblasserdamseStatus,times,now);
-  renderBridge('botlekbrug','Botlekbrug',botlekStatus,times,now);
-  renderBridge('spijkenisserbrug','Spijkenisserbrug',spijkenisserStatus,times,now);
-
-  const dateText=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(now);
-  document.getElementById('today').textContent='VANDAAG '+dateText;
-  document.getElementById('checked').textContent=`Laatste herberekening ${pad(now.getHours())}:${pad(now.getMinutes())} · iedere 5 min`;
-}
-
-render();
-setInterval(render,REFRESH_MS);
+const REFRESH_MS=5*60*1000; let noticeOverrides=[];
+function pad(n){return String(n).padStart(2,'0')} function mins(h,m){return h*60+m} function timeText(t){return `${pad(Math.floor(t/60))}:${pad(t%60)}`} function isWeekday(d){const n=d.getDay();return n>=1&&n<=5} function isWeekend(d){const n=d.getDay();return n===0||n===6} function inRange(t,s,e){return t>=s&&t<e}
+function roundedStart(now){return Math.ceil((now.getHours()*60+now.getMinutes())/15)*15} function remainingQuarterHours(now){const out=[];for(let t=roundedStart(now);t<1440;t+=15)out.push(t);return out}
+function botlekStatus(t,date){let p=t>=mins(6,0)&&t<=mins(22,0)&&(t%60===15||t%60===45),b=true;if(isWeekday(date)&&(inRange(t,mins(6,30),mins(9,30))||inRange(t,mins(15,30),mins(18,30))))p=false;return{p,b}}
+function spijkenisserStatus(t,date){let p=t>=mins(6,0)&&t<=mins(22,0)&&t%60===30,b=true;if(isWeekday(date)&&(inRange(t,mins(6,30),mins(9,30))||inRange(t,mins(15,30),mins(18,30))))p=false;return{p,b}}
+function alblasserdamseStatus(t,date){let open=false;if(inRange(t,0,mins(7,15)))open=true;if(isWeekend(date)&&inRange(t,mins(9,0),mins(9,15)))open=true;if(isWeekday(date)&&inRange(t,mins(9,15),mins(9,30)))open=true;for(let h=10;h<=14;h++)if(inRange(t,mins(h,0),mins(h,15)))open=true;if(isWeekend(date)&&inRange(t,mins(15,0),mins(15,15)))open=true;if(inRange(t,mins(16,0),mins(16,15)))open=true;if(isWeekend(date)&&inRange(t,mins(18,0),mins(18,15)))open=true;if(isWeekday(date)&&inRange(t,mins(18,15),mins(18,30)))open=true;if(inRange(t,mins(19,0),1440))open=true;return{p:open,b:open}}
+function applyOverrides(bridge,t,date,status){const day=`${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;let s={...status};noticeOverrides.filter(o=>o.bridge===bridge&&day>=o.startDate&&day<=o.endDate&&inRange(t,o.startMin,o.endMin)).sort((a,b)=>(a.priority||0)-(b.priority||0)).forEach(o=>{if(typeof o.open==='boolean')s={p:o.open,b:o.open};if(typeof o.p==='boolean')s.p=o.p;if(typeof o.b==='boolean')s.b=o.b});return s}
+function part(label,time,open){return `<div class="part ${open?'open':'closed'}"><span class="badge">${label}</span>${time}</div>`} function slot(time,status){const tt=timeText(time);if(status.p===status.b)return `<div class="slot"><div class="part ${status.p?'open':'closed'}">${tt}</div></div>`;return `<div class="slot">${part('P',tt,status.p)}${part('B',tt,status.b)}</div>`}
+function renderBridge(id,name,fn,times,date){const box=document.getElementById(id);if(!times.length){box.innerHTML='<div class="empty">Voor vandaag zijn geen toekomstige kwartieren meer over.</div>';return}box.innerHTML=times.map(t=>slot(t,applyOverrides(name,t,date,fn(t,date)))).join('')}
+async function loadOverrides(){try{const r=await fetch(`notices.json?ts=${Date.now()}`,{cache:'no-store'});if(r.ok){const d=await r.json();if(Array.isArray(d))noticeOverrides=d}}catch(e){}}
+async function render(){await loadOverrides();const now=new Date(),times=remainingQuarterHours(now);renderBridge('alblasserdamsebrug','Alblasserdamsebrug',alblasserdamseStatus,times,now);renderBridge('botlekbrug','Botlekbrug',botlekStatus,times,now);renderBridge('spijkenisserbrug','Spijkenisserbrug',spijkenisserStatus,times,now);const dateText=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(now);document.getElementById('today').textContent=dateText;document.getElementById('checked').textContent=`Laatste herberekening ${pad(now.getHours())}:${pad(now.getMinutes())} · iedere 5 min`}
+render();setInterval(render,REFRESH_MS);
 </script>
 </body>
 </html>
