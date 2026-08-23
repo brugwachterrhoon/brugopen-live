@@ -1,25 +1,5 @@
 [
   {
-    "bridge": "Spijkenisserbrug",
-    "startDate": "2026-08-22",
-    "endDate": "2026-08-22",
-    "startMin": 420,
-    "endMin": 540,
-    "open": false,
-    "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16487"
-  },
-  {
-    "bridge": "Spijkenisserbrug",
-    "startDate": "2026-08-22",
-    "endDate": "2026-08-22",
-    "startMin": 660,
-    "endMin": 780,
-    "open": false,
-    "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16487"
-  },
-  {
     "bridge": "Botlekbrug",
     "startDate": "2026-08-30",
     "endDate": "2026-08-30",
