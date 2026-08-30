@@ -11,7 +11,7 @@
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
     header{background:var(--navy);color:#fff;padding:24px 18px}
     .header-wrap{max-width:1280px;margin:0 auto}
-    h1{margin:0 0 7px;font-size:30px}.sub{margin:0;color:#d0d5dd;line-height:1.4}
+    h1{margin:0;font-size:30px}
     .layout{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:22px;padding:22px 18px 42px}
     .sidebar{position:sticky;top:14px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 3px 12px rgba(16,24,40,.05)}
     .bridge-photo-wrap{width:100%;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:#e9eef3;margin-bottom:12px;position:relative;border:1px solid var(--line)}
@@ -32,7 +32,7 @@
   </style>
 </head>
 <body>
-<header><div class="header-wrap"><h1>BAS & PIN ACTUEEL</h1><p class="sub">Alleen extra werkzaamheden, uitzonderlijke maatregelen en langdurige stremmingen. Vandaag en morgen.</p></div></header>
+<header><div class="header-wrap"><h1>BAS & PIN ACTUEEL</h1></div></header>
 <div class="layout">
   <aside class="sidebar" aria-label="Brug kiezen">
     <div class="bridge-photo-wrap" id="bridgePhotoWrap">
@@ -66,7 +66,7 @@ const BRIDGE_IMAGES={
   'Hartelbrug':'images/hartelbrug.jpg',
   'Merwedebrug Gorinchem':'images/merwedebrug-gorinchem.jpg'
 };
-function pad(n){return String(n).padStart(2,'0')} function iso(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`} function fmtDate(d){return new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d)} function fmtTime(m){if(m===1440)return '24:00';return `${pad(Math.floor(m/60))}:${pad(m%60)}`} function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function pad(n){return String(n).padStart(2,'0')} function iso(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`} function fmtDate(d){return new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d)} function fmtTime(m){if(m===1440)return '24:00';return `${pad(Math.floor(m/60))}:${pad(m%60)}`} function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]))}
 function updateBridgePhoto(){
   const img=document.getElementById('bridgePhoto');
   const placeholder=document.getElementById('bridgePhotoPlaceholder');
