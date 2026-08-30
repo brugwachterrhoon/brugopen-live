@@ -23,6 +23,8 @@ BRIDGES = {
     "brienenoordbrug": "Brienenoordbrug",
     "wantijbrug": "Wantijbrug",
     "hartelbrug": "Hartelbrug",
+    "merwedebrug gorinchem": "Merwedebrug Gorinchem",
+    "merwedebrug": "Merwedebrug Gorinchem",
 }
 MONTHS = {
     "jan":1,"januari":1,"january":1,
@@ -90,14 +92,12 @@ def parse_ranges(line, now):
     s=line.lower().replace("uur", " ").replace("hrs.", " ").replace("hrs", " ")
     s=re.sub(r"\s+", " ", s)
     ranges=[]
-
     rx_cross=re.compile(rf"(\d{{1,2}})\s+({MONTH_RE}).*?(\d{{1,2}})[.:](\d{{2}}).*?(?:tot|to|-)\s+(?:[a-z]+\s+)?(\d{{1,2}})\s+({MONTH_RE})\s+(\d{{1,2}})[.:](\d{{2}})", re.I)
     for m in rx_cross.finditer(s):
         a=dt_for(m.group(1),m.group(2),m.group(3),m.group(4),now)
         b=dt_for(m.group(5),m.group(6),m.group(7),m.group(8),now)
         if b<a: b=b.replace(year=a.year+1)
         ranges.append((a,b))
-
     rx_same=re.compile(rf"(\d{{1,2}})\s+({MONTH_RE}).*?(\d{{1,2}})[.:](\d{{2}}).*?(?:tot|to|en|and|-)\s+(\d{{1,2}})[.:](\d{{2}})", re.I)
     for m in rx_same.finditer(s):
         a=dt_for(m.group(1),m.group(2),m.group(3),m.group(4),now)
