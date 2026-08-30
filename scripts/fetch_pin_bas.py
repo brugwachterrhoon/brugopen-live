@@ -21,6 +21,8 @@ BRIDGES = {
     "calandbrug": "Calandbrug",
     "van brienenoordbrug": "Brienenoordbrug",
     "brienenoordbrug": "Brienenoordbrug",
+    "brienenoord bridge": "Brienenoordbrug",
+    "van brienenoord bridge": "Brienenoordbrug",
     "wantijbrug": "Wantijbrug",
     "hartelbrug": "Hartelbrug",
     "merwedebrug gorinchem": "Merwedebrug Gorinchem",
@@ -83,9 +85,11 @@ def nearest_year(month, now):
     return year
 
 
-def dt_for(day, month_name, hh, mm, now):
+def dt_for(day, month_name, hh, mm, now, year=None):
     month=MONTHS[month_name.lower()]
-    return datetime(nearest_year(month, now), month, int(day), int(hh), int(mm), tzinfo=TZ)
+    if year is None:
+        year=nearest_year(month, now)
+    return datetime(int(year), month, int(day), int(hh), int(mm), tzinfo=TZ)
 
 
 def parse_ranges(line, now):
@@ -105,6 +109,17 @@ def parse_ranges(line, now):
         if b<=a: b += timedelta(days=1)
         if not any(abs((a-x[0]).total_seconds())<60 and abs((b-x[1]).total_seconds())<60 for x in ranges): ranges.append((a,b))
     return ranges
+
+
+def parse_start_date(lines, now):
+    rx=re.compile(rf"start\s*date\s+(\d{{1,2}})\s+({MONTH_RE})\s+(\d{{4}})(?:\s*[-–]\s*(\d{{1,2}})[.:](\d{{2}}))?", re.I)
+    for line in lines:
+        m=rx.search(line)
+        if m:
+            hh=m.group(4) or 0
+            mm=m.group(5) or 0
+            return dt_for(m.group(1),m.group(2),hh,mm,now,m.group(3))
+    return None
 
 
 def discover_relevant_links():
@@ -147,15 +162,31 @@ def make_override(bridge, a, b, is_open, source, priority):
 def parse_notice(url,title,now):
     p=parse_page(url)
     text="\n".join(p.lines)
+    lowtext=text.lower()
     bridge=bridge_for(title+"\n"+text)
     if not bridge: return []
     rows=[]; mode=False
     for line in p.lines:
         low=line.lower()
         if any(x in low for x in ["passage possible","mogelijkheid van passage","mogelijkheden van passage","tussentijdse opening","intermediate opening"]): mode=True
-        elif any(x in low for x in ["geen bediening","no service","gestremd","closed","niet bedienbaar","not be operated","complete obstruction"]): mode=False
+        elif any(x in low for x in ["geen bediening","no service","gestremd","closed","niet bedienbaar","not be operated","complete obstruction","out of order"]): mode=False
         for a,b in parse_ranges(line,now):
             rows.extend(make_override(bridge,a,b,mode,url,100 if mode else 50))
+
+    indefinite = any(x in lowtext for x in ["until further notice","tot nader bericht","tot nader order"])
+    restricted = any(x in lowtext for x in ["out of order","geen bediening","no service","gestremd","closed","niet bedienbaar","not be operated","complete obstruction"])
+    if indefinite and restricted:
+        start=parse_start_date(p.lines,now) or now
+        rows.append({
+            "bridge":bridge,
+            "startDate":start.date().isoformat(),
+            "endDate":"2099-12-31",
+            "startMin":start.hour*60+start.minute if start.date()==now.date() else 0,
+            "endMin":1440,
+            "open":False,
+            "priority":60,
+            "source":url,
+        })
     return rows
 
 
