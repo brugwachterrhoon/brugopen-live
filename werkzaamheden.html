@@ -4,30 +4,47 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Actuele extra werkzaamheden, langdurige stremmingen en uitzonderlijke PIN/BAS-maatregelen voor bruggen, vandaag en morgen.">
-  <title>Pin-Bas berichten van vandaag</title>
+  <title>BAS & PIN actueel</title>
   <style>
     *{box-sizing:border-box}
     :root{--navy:#172433;--bg:#f2f4f7;--card:#fff;--text:#17202a;--muted:#667085;--red:#b42318;--redbg:#fef3f2;--green:#067647;--greenbg:#ecfdf3;--amber:#b54708;--amberbg:#fffaeb;--line:#e4e7ec;--blue:#175cd3}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-    header{background:var(--navy);color:#fff;padding:26px 18px 0}.wrap{max-width:1100px;margin:0 auto}
-    h1{margin:0 0 7px;font-size:30px}.sub{margin:0;color:#d0d5dd;line-height:1.4;padding-bottom:20px}
-    .tabs{display:flex;gap:6px;overflow-x:auto}.tab{border:0;background:#26384b;color:#fff;padding:13px 18px;font-size:15px;font-weight:bold;cursor:pointer;border-radius:9px 9px 0 0;white-space:nowrap}.tab.active{background:var(--bg);color:var(--navy)}
-    main{padding:22px 18px 42px}.day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:0 3px 12px rgba(16,24,40,.05)}
+    header{background:var(--navy);color:#fff;padding:24px 18px}
+    .header-wrap{max-width:1280px;margin:0 auto}
+    h1{margin:0 0 7px;font-size:30px}.sub{margin:0;color:#d0d5dd;line-height:1.4}
+    .layout{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:22px;padding:22px 18px 42px}
+    .sidebar{position:sticky;top:14px;align-self:start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 3px 12px rgba(16,24,40,.05)}
+    .sidebar-title{font-size:13px;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:4px 5px 10px}
+    .tab{display:block;width:100%;border:0;background:#eef2f6;color:var(--navy);padding:13px 12px;margin:0 0 7px;font-size:15px;font-weight:bold;text-align:left;cursor:pointer;border-radius:9px}
+    .tab:hover{background:#dde5ed}.tab.active{background:var(--navy);color:#fff}.tab:last-child{margin-bottom:0}
+    main{min-width:0}.day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:0 3px 12px rgba(16,24,40,.05)}
     .dayhead{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--line)}
     .label{font-size:14px;font-weight:bold;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}h2{margin:4px 0 0;font-size:22px}
     .status{padding:7px 10px;border-radius:999px;font-size:13px;font-weight:bold;white-space:nowrap}.status.alert{background:var(--redbg);color:var(--red)}.status.clear{background:var(--greenbg);color:var(--green)}
     .body{padding:20px}.clearbox{background:var(--greenbg);border-left:5px solid var(--green);padding:16px 18px;border-radius:8px;font-size:18px;font-weight:bold}
     .notice{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}.notice:last-child{margin-bottom:0}.notice.closed{background:var(--redbg);border-color:#fecdca}.notice.open{background:var(--amberbg);border-color:#fedf89}.notice.long{background:#fff1f0;border:2px solid #f04438}
     .notice h3{margin:0 0 8px;font-size:19px}.time{font-size:22px;font-weight:bold;margin-bottom:8px}.summary{margin:0 0 10px;line-height:1.45}.scope{font-weight:bold;margin:0 0 8px}.source a{color:var(--blue);font-weight:bold;text-decoration:none}.source{font-size:14px;color:var(--muted)}
-    .bridge-name{font-size:21px;font-weight:bold;margin:0 0 16px;color:var(--navy)}.meta{max-width:1100px;margin:0 auto;padding:0 18px 28px;color:var(--muted);font-size:13px;text-align:center;line-height:1.45}.error{background:#fff4ed;color:#9a3412;border:1px solid #fed7aa;padding:14px 16px;border-radius:10px}
-    @media(max-width:600px){h1{font-size:25px}.dayhead{flex-direction:column}.time{font-size:20px}.tab{padding:12px 15px;font-size:14px}}
+    .bridge-name{font-size:24px;font-weight:bold;margin:0 0 16px;color:var(--navy)}.meta{max-width:1280px;margin:0 auto;padding:0 18px 28px;color:var(--muted);font-size:13px;text-align:center;line-height:1.45}.error{background:#fff4ed;color:#9a3412;border:1px solid #fed7aa;padding:14px 16px;border-radius:10px}
+    @media(max-width:760px){h1{font-size:25px}.layout{grid-template-columns:1fr}.sidebar{position:static}.sidebar-title{padding-bottom:8px}.tab{padding:11px 12px}.dayhead{flex-direction:column}.time{font-size:20px}}
   </style>
 </head>
 <body>
-<header><div class="wrap"><h1>Pin-Bas berichten van vandaag</h1><p class="sub">Alleen extra werkzaamheden, uitzonderlijke maatregelen en langdurige stremmingen. Vandaag en morgen.</p><nav class="tabs" aria-label="Brug kiezen">
-<button class="tab active" data-bridge="Botlekbrug">Botlekbrug</button><button class="tab" data-bridge="Spijkenisserbrug">Spijkenisserbrug</button><button class="tab" data-bridge="Papendrechtsebrug">Papendrechtse brug</button><button class="tab" data-bridge="Brug over de Noord">Brug over de Noord</button><button class="tab" data-bridge="Calandbrug">Calandbrug</button><button class="tab" data-bridge="Brienenoordbrug">Brienenoordbrug</button><button class="tab" data-bridge="Wantijbrug">Wantijbrug</button><button class="tab" data-bridge="Hartelbrug">Hartelbrug</button>
-</nav></div></header>
-<main class="wrap"><div class="bridge-name" id="bridgeName">Botlekbrug</div><section class="day" id="todayCard"></section><section class="day" id="tomorrowCard"></section></main>
+<header><div class="header-wrap"><h1>BAS & PIN ACTUEEL</h1><p class="sub">Alleen extra werkzaamheden, uitzonderlijke maatregelen en langdurige stremmingen. Vandaag en morgen.</p></div></header>
+<div class="layout">
+  <aside class="sidebar" aria-label="Brug kiezen">
+    <div class="sidebar-title">Kies een brug</div>
+    <button class="tab active" data-bridge="Botlekbrug">Botlekbrug</button>
+    <button class="tab" data-bridge="Spijkenisserbrug">Spijkenisserbrug</button>
+    <button class="tab" data-bridge="Papendrechtsebrug">Papendrechtse brug</button>
+    <button class="tab" data-bridge="Brug over de Noord">Brug over de Noord</button>
+    <button class="tab" data-bridge="Calandbrug">Calandbrug</button>
+    <button class="tab" data-bridge="Brienenoordbrug">Brienenoordbrug</button>
+    <button class="tab" data-bridge="Wantijbrug">Wantijbrug</button>
+    <button class="tab" data-bridge="Hartelbrug">Hartelbrug</button>
+    <button class="tab" data-bridge="Merwedebrug Gorinchem">Merwedebrug Gorinchem</button>
+  </aside>
+  <main><div class="bridge-name" id="bridgeName">Botlekbrug</div><section class="day" id="todayCard"></section><section class="day" id="tomorrowCard"></section></main>
+</div>
 <div class="meta" id="meta">Bronnen: Havenbedrijf Rotterdam en Rijkswaterstaat. Automatische controle iedere 5 minuten.</div>
 <script>
 const REFRESH=5*60*1000;let activeBridge='Botlekbrug';let cachedRows=[];let longRows=[];
