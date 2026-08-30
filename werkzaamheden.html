@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Actuele extra werkzaamheden en uitzonderlijke beperkingen voor de Botlekbrug, vandaag en morgen.">
+  <title>Botlekbrug - Extra werkzaamheden</title>
+  <style>
+    *{box-sizing:border-box}
+    :root{--navy:#172433;--bg:#f2f4f7;--card:#fff;--text:#17202a;--muted:#667085;--red:#b42318;--redbg:#fef3f2;--green:#067647;--greenbg:#ecfdf3;--amber:#b54708;--amberbg:#fffaeb;--line:#e4e7ec;--blue:#175cd3}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+    header{background:var(--navy);color:#fff;padding:26px 18px}
+    .wrap{max-width:900px;margin:0 auto}
+    h1{margin:0 0 7px;font-size:30px}.sub{margin:0;color:#d0d5dd;line-height:1.4}
+    main{padding:22px 18px 42px}.day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:0 3px 12px rgba(16,24,40,.05)}
+    .dayhead{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--line)}
+    .label{font-size:14px;font-weight:bold;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+    h2{margin:4px 0 0;font-size:22px}.status{padding:7px 10px;border-radius:999px;font-size:13px;font-weight:bold;white-space:nowrap}.status.alert{background:var(--redbg);color:var(--red)}.status.clear{background:var(--greenbg);color:var(--green)}
+    .body{padding:20px}.clearbox{background:var(--greenbg);border-left:5px solid var(--green);padding:16px 18px;border-radius:8px;font-size:18px;font-weight:bold}
+    .notice{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}.notice:last-child{margin-bottom:0}.notice.closed{background:var(--redbg);border-color:#fecdca}.notice.open{background:var(--amberbg);border-color:#fedf89}
+    .notice h3{margin:0 0 8px;font-size:19px}.time{font-size:22px;font-weight:bold;margin-bottom:8px}.summary{margin:0 0 10px;line-height:1.45}.source a{color:var(--blue);font-weight:bold;text-decoration:none}.source{font-size:14px;color:var(--muted)}
+    .meta{max-width:900px;margin:0 auto;padding:0 18px 28px;color:var(--muted);font-size:13px;text-align:center;line-height:1.45}
+    .error{background:#fff4ed;color:#9a3412;border:1px solid #fed7aa;padding:14px 16px;border-radius:10px}
+    @media(max-width:600px){h1{font-size:25px}.dayhead{flex-direction:column}.time{font-size:20px}}
+  </style>
+</head>
+<body>
+<header><div class="wrap"><h1>Botlekbrug</h1><p class="sub">Alleen extra werkzaamheden en uitzonderlijke BAS/PIN-maatregelen voor vandaag en morgen.</p></div></header>
+<main class="wrap"><section class="day" id="todayCard"></section><section class="day" id="tomorrowCard"></section></main>
+<div class="meta" id="meta">Bron: Havenbedrijf Rotterdam, Port Information Notices. Automatische controle iedere 5 minuten.</div>
+<script>
+const REFRESH=5*60*1000;
+function pad(n){return String(n).padStart(2,'0')}
+function iso(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
+function fmtDate(d){return new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d)}
+function fmtTime(m){if(m===1440)return '24:00';return `${pad(Math.floor(m/60))}:${pad(m%60)}`}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function uniq(rows){const seen=new Set();return rows.filter(r=>{const k=[r.startDate,r.startMin,r.endMin,r.open,r.source].join('|');if(seen.has(k))return false;seen.add(k);return true})}
+function renderDay(el,date,label,rows){
+  const relevant=uniq(rows.filter(r=>r.bridge==='Botlekbrug'&&r.startDate===iso(date)));
+  const has=relevant.length>0;
+  let html=`<div class="dayhead"><div><div class="label">${label}</div><h2>${fmtDate(date)}</h2></div><span class="status ${has?'alert':'clear'}">${has?'BIJZONDERHEID':'GEEN MELDING'}</span></div><div class="body">`;
+  if(!has){html+=`<div class="clearbox">Geen extra werkzaamheden of uitzonderlijke tijdelijke maatregel aangetroffen.</div>`}
+  else relevant.sort((a,b)=>a.startMin-b.startMin).forEach(r=>{
+    const closed=r.open!==true;
+    const title=closed?'Extra beperking / geen bediening':'Extra passage of opening mogelijk';
+    const summary=closed?'Tijdens dit tijdvak geldt een uitzonderlijke BAS/PIN-beperking voor de Botlekbrug.':'Tijdens dit tijdvak geldt een uitzonderlijke BAS/PIN-opening of passage-mogelijkheid.';
+    html+=`<article class="notice ${closed?'closed':'open'}"><h3>${title}</h3><div class="time">${fmtTime(r.startMin)} - ${fmtTime(r.endMin)}</div><p class="summary">${summary}</p><div class="source">Officieel bericht: <a href="${esc(r.source)}" target="_blank" rel="noopener">bekijk BAS/PIN</a></div></article>`;
+  });
+  html+='</div>';el.innerHTML=html;
+}
+async function update(){
+  const now=new Date(),tomorrow=new Date(now);tomorrow.setDate(now.getDate()+1);
+  try{
+    const res=await fetch(`notices.json?ts=${Date.now()}`,{cache:'no-store'});if(!res.ok)throw new Error();
+    const rows=await res.json();
+    renderDay(document.getElementById('todayCard'),now,'Vandaag',rows);
+    renderDay(document.getElementById('tomorrowCard'),tomorrow,'Morgen',rows);
+    document.getElementById('meta').textContent=`Bron: Havenbedrijf Rotterdam, Port Information Notices. Laatste controle ${pad(now.getHours())}:${pad(now.getMinutes())}. Automatische controle iedere 5 minuten.`;
+  }catch(e){
+    document.getElementById('todayCard').innerHTML='<div class="body"><div class="error">De actuele BAS/PIN-gegevens konden niet worden geladen.</div></div>';
+    document.getElementById('tomorrowCard').innerHTML='';
+  }
+}
+update();setInterval(update,REFRESH);
+</script>
+</body>
+</html>
