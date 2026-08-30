@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Actuele extra werkzaamheden en uitzonderlijke PIN/BAS-maatregelen voor de Botlekbrug en Spijkenisserbrug, vandaag en morgen.">
+  <meta name="description" content="Actuele extra werkzaamheden en uitzonderlijke PIN/BAS-maatregelen voor bruggen in en rond Rotterdam, vandaag en morgen.">
   <title>Pin-Bas berichten van vandaag</title>
   <style>
     *{box-sizing:border-box}
     :root{--navy:#172433;--bg:#f2f4f7;--card:#fff;--text:#17202a;--muted:#667085;--red:#b42318;--redbg:#fef3f2;--green:#067647;--greenbg:#ecfdf3;--amber:#b54708;--amberbg:#fffaeb;--line:#e4e7ec;--blue:#175cd3}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
     header{background:var(--navy);color:#fff;padding:26px 18px 0}
-    .wrap{max-width:900px;margin:0 auto}
+    .wrap{max-width:1100px;margin:0 auto}
     h1{margin:0 0 7px;font-size:30px}.sub{margin:0;color:#d0d5dd;line-height:1.4;padding-bottom:20px}
-    .tabs{display:flex;gap:6px;overflow-x:auto}
-    .tab{border:0;background:#26384b;color:#fff;padding:13px 20px;font-size:16px;font-weight:bold;cursor:pointer;border-radius:9px 9px 0 0;white-space:nowrap}
+    .tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:0;scrollbar-width:thin}
+    .tab{border:0;background:#26384b;color:#fff;padding:13px 18px;font-size:15px;font-weight:bold;cursor:pointer;border-radius:9px 9px 0 0;white-space:nowrap}
     .tab.active{background:var(--bg);color:var(--navy)}
     main{padding:22px 18px 42px}.day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:0 3px 12px rgba(16,24,40,.05)}
     .dayhead{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--line)}
@@ -22,10 +22,10 @@
     .body{padding:20px}.clearbox{background:var(--greenbg);border-left:5px solid var(--green);padding:16px 18px;border-radius:8px;font-size:18px;font-weight:bold}
     .notice{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}.notice:last-child{margin-bottom:0}.notice.closed{background:var(--redbg);border-color:#fecdca}.notice.open{background:var(--amberbg);border-color:#fedf89}.notice.mixed{background:#fff7ed;border-color:#fdba74}
     .notice h3{margin:0 0 8px;font-size:19px}.time{font-size:22px;font-weight:bold;margin-bottom:8px}.summary{margin:0 0 10px;line-height:1.45}.source a{color:var(--blue);font-weight:bold;text-decoration:none}.source{font-size:14px;color:var(--muted)}
-    .bridge-name{font-size:20px;font-weight:bold;margin:0 0 16px;color:var(--navy)}
-    .meta{max-width:900px;margin:0 auto;padding:0 18px 28px;color:var(--muted);font-size:13px;text-align:center;line-height:1.45}
+    .bridge-name{font-size:21px;font-weight:bold;margin:0 0 16px;color:var(--navy)}
+    .meta{max-width:1100px;margin:0 auto;padding:0 18px 28px;color:var(--muted);font-size:13px;text-align:center;line-height:1.45}
     .error{background:#fff4ed;color:#9a3412;border:1px solid #fed7aa;padding:14px 16px;border-radius:10px}
-    @media(max-width:600px){h1{font-size:25px}.dayhead{flex-direction:column}.time{font-size:20px}.tab{padding:12px 15px;font-size:15px}}
+    @media(max-width:600px){h1{font-size:25px}.dayhead{flex-direction:column}.time{font-size:20px}.tab{padding:12px 15px;font-size:14px}}
   </style>
 </head>
 <body>
@@ -36,6 +36,12 @@
     <nav class="tabs" aria-label="Brug kiezen">
       <button class="tab active" data-bridge="Botlekbrug">Botlekbrug</button>
       <button class="tab" data-bridge="Spijkenisserbrug">Spijkenisserbrug</button>
+      <button class="tab" data-bridge="Papendrechtsebrug">Papendrechtse brug</button>
+      <button class="tab" data-bridge="Brug over de Noord">Brug over de Noord</button>
+      <button class="tab" data-bridge="Calandbrug">Calandbrug</button>
+      <button class="tab" data-bridge="Brienenoordbrug">Brienenoordbrug</button>
+      <button class="tab" data-bridge="Wantijbrug">Wantijbrug</button>
+      <button class="tab" data-bridge="Hartelbrug">Hartelbrug</button>
     </nav>
   </div>
 </header>
