@@ -3,117 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Actuele extra werkzaamheden en uitzonderlijke PIN/BAS-maatregelen voor bruggen in en rond Rotterdam, vandaag en morgen.">
+  <meta name="description" content="Actuele extra werkzaamheden, langdurige stremmingen en uitzonderlijke PIN/BAS-maatregelen voor bruggen, vandaag en morgen.">
   <title>Pin-Bas berichten van vandaag</title>
   <style>
     *{box-sizing:border-box}
     :root{--navy:#172433;--bg:#f2f4f7;--card:#fff;--text:#17202a;--muted:#667085;--red:#b42318;--redbg:#fef3f2;--green:#067647;--greenbg:#ecfdf3;--amber:#b54708;--amberbg:#fffaeb;--line:#e4e7ec;--blue:#175cd3}
     body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-    header{background:var(--navy);color:#fff;padding:26px 18px 0}
-    .wrap{max-width:1100px;margin:0 auto}
+    header{background:var(--navy);color:#fff;padding:26px 18px 0}.wrap{max-width:1100px;margin:0 auto}
     h1{margin:0 0 7px;font-size:30px}.sub{margin:0;color:#d0d5dd;line-height:1.4;padding-bottom:20px}
-    .tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:0;scrollbar-width:thin}
-    .tab{border:0;background:#26384b;color:#fff;padding:13px 18px;font-size:15px;font-weight:bold;cursor:pointer;border-radius:9px 9px 0 0;white-space:nowrap}
-    .tab.active{background:var(--bg);color:var(--navy)}
+    .tabs{display:flex;gap:6px;overflow-x:auto}.tab{border:0;background:#26384b;color:#fff;padding:13px 18px;font-size:15px;font-weight:bold;cursor:pointer;border-radius:9px 9px 0 0;white-space:nowrap}.tab.active{background:var(--bg);color:var(--navy)}
     main{padding:22px 18px 42px}.day{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden;box-shadow:0 3px 12px rgba(16,24,40,.05)}
     .dayhead{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:18px 20px;border-bottom:1px solid var(--line)}
-    .label{font-size:14px;font-weight:bold;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
-    h2{margin:4px 0 0;font-size:22px}.status{padding:7px 10px;border-radius:999px;font-size:13px;font-weight:bold;white-space:nowrap}.status.alert{background:var(--redbg);color:var(--red)}.status.clear{background:var(--greenbg);color:var(--green)}
+    .label{font-size:14px;font-weight:bold;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}h2{margin:4px 0 0;font-size:22px}
+    .status{padding:7px 10px;border-radius:999px;font-size:13px;font-weight:bold;white-space:nowrap}.status.alert{background:var(--redbg);color:var(--red)}.status.clear{background:var(--greenbg);color:var(--green)}
     .body{padding:20px}.clearbox{background:var(--greenbg);border-left:5px solid var(--green);padding:16px 18px;border-radius:8px;font-size:18px;font-weight:bold}
-    .notice{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}.notice:last-child{margin-bottom:0}.notice.closed{background:var(--redbg);border-color:#fecdca}.notice.open{background:var(--amberbg);border-color:#fedf89}.notice.mixed{background:#fff7ed;border-color:#fdba74}
-    .notice h3{margin:0 0 8px;font-size:19px}.time{font-size:22px;font-weight:bold;margin-bottom:8px}.summary{margin:0 0 10px;line-height:1.45}.source a{color:var(--blue);font-weight:bold;text-decoration:none}.source{font-size:14px;color:var(--muted)}
-    .bridge-name{font-size:21px;font-weight:bold;margin:0 0 16px;color:var(--navy)}
-    .meta{max-width:1100px;margin:0 auto;padding:0 18px 28px;color:var(--muted);font-size:13px;text-align:center;line-height:1.45}
-    .error{background:#fff4ed;color:#9a3412;border:1px solid #fed7aa;padding:14px 16px;border-radius:10px}
+    .notice{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px}.notice:last-child{margin-bottom:0}.notice.closed{background:var(--redbg);border-color:#fecdca}.notice.open{background:var(--amberbg);border-color:#fedf89}.notice.long{background:#fff1f0;border:2px solid #f04438}
+    .notice h3{margin:0 0 8px;font-size:19px}.time{font-size:22px;font-weight:bold;margin-bottom:8px}.summary{margin:0 0 10px;line-height:1.45}.scope{font-weight:bold;margin:0 0 8px}.source a{color:var(--blue);font-weight:bold;text-decoration:none}.source{font-size:14px;color:var(--muted)}
+    .bridge-name{font-size:21px;font-weight:bold;margin:0 0 16px;color:var(--navy)}.meta{max-width:1100px;margin:0 auto;padding:0 18px 28px;color:var(--muted);font-size:13px;text-align:center;line-height:1.45}.error{background:#fff4ed;color:#9a3412;border:1px solid #fed7aa;padding:14px 16px;border-radius:10px}
     @media(max-width:600px){h1{font-size:25px}.dayhead{flex-direction:column}.time{font-size:20px}.tab{padding:12px 15px;font-size:14px}}
   </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <h1>Pin-Bas berichten van vandaag</h1>
-    <p class="sub">Alleen extra werkzaamheden en uitzonderlijke tijdelijke maatregelen. Ook morgen wordt alvast getoond.</p>
-    <nav class="tabs" aria-label="Brug kiezen">
-      <button class="tab active" data-bridge="Botlekbrug">Botlekbrug</button>
-      <button class="tab" data-bridge="Spijkenisserbrug">Spijkenisserbrug</button>
-      <button class="tab" data-bridge="Papendrechtsebrug">Papendrechtse brug</button>
-      <button class="tab" data-bridge="Brug over de Noord">Brug over de Noord</button>
-      <button class="tab" data-bridge="Calandbrug">Calandbrug</button>
-      <button class="tab" data-bridge="Brienenoordbrug">Brienenoordbrug</button>
-      <button class="tab" data-bridge="Wantijbrug">Wantijbrug</button>
-      <button class="tab" data-bridge="Hartelbrug">Hartelbrug</button>
-    </nav>
-  </div>
-</header>
-<main class="wrap">
-  <div class="bridge-name" id="bridgeName">Botlekbrug</div>
-  <section class="day" id="todayCard"></section>
-  <section class="day" id="tomorrowCard"></section>
-</main>
-<div class="meta" id="meta">Bron: Havenbedrijf Rotterdam, Port Information Notices. Automatische controle iedere 5 minuten.</div>
+<header><div class="wrap"><h1>Pin-Bas berichten van vandaag</h1><p class="sub">Alleen extra werkzaamheden, uitzonderlijke maatregelen en langdurige stremmingen. Vandaag en morgen.</p><nav class="tabs" aria-label="Brug kiezen">
+<button class="tab active" data-bridge="Botlekbrug">Botlekbrug</button><button class="tab" data-bridge="Spijkenisserbrug">Spijkenisserbrug</button><button class="tab" data-bridge="Papendrechtsebrug">Papendrechtse brug</button><button class="tab" data-bridge="Brug over de Noord">Brug over de Noord</button><button class="tab" data-bridge="Calandbrug">Calandbrug</button><button class="tab" data-bridge="Brienenoordbrug">Brienenoordbrug</button><button class="tab" data-bridge="Wantijbrug">Wantijbrug</button><button class="tab" data-bridge="Hartelbrug">Hartelbrug</button>
+</nav></div></header>
+<main class="wrap"><div class="bridge-name" id="bridgeName">Botlekbrug</div><section class="day" id="todayCard"></section><section class="day" id="tomorrowCard"></section></main>
+<div class="meta" id="meta">Bronnen: Havenbedrijf Rotterdam en Rijkswaterstaat. Automatische controle iedere 5 minuten.</div>
 <script>
-const REFRESH=5*60*1000;
-let activeBridge='Botlekbrug';
-let cachedRows=[];
-function pad(n){return String(n).padStart(2,'0')}
-function iso(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
-function fmtDate(d){return new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d)}
-function fmtTime(m){if(m===1440)return '24:00';return `${pad(Math.floor(m/60))}:${pad(m%60)}`}
-function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function grouped(rows){
-  const map=new Map();
-  rows.forEach(r=>{
-    const k=[r.bridge,r.startDate,r.startMin,r.endMin,r.source].join('|');
-    if(!map.has(k))map.set(k,{...r,states:new Set()});
-    map.get(k).states.add(r.open===true?'open':'closed');
-  });
-  return [...map.values()];
-}
-function noticeText(g,bridge){
-  const hasOpen=g.states.has('open'), hasClosed=g.states.has('closed');
-  if(hasOpen&&hasClosed){
-    return {cls:'mixed',title:'Geen bediening, passage blijft mogelijk',summary:`Tijdens dit tijdvak geldt een uitzonderlijke PIN/BAS-beperking voor de ${bridge}. De brug wordt niet bediend, maar het officiële bericht vermeldt ook een passage- of doorgangsmogelijkheid.`};
-  }
-  if(hasClosed){
-    return {cls:'closed',title:'Extra beperking / geen bediening',summary:`Tijdens dit tijdvak geldt een uitzonderlijke PIN/BAS-beperking voor de ${bridge}.`};
-  }
-  return {cls:'open',title:'Extra passage of opening mogelijk',summary:`Tijdens dit tijdvak geldt een uitzonderlijke PIN/BAS-opening of passage-mogelijkheid voor de ${bridge}.`};
-}
-function renderDay(el,date,label,rows){
-  const relevant=grouped(rows.filter(r=>r.bridge===activeBridge&&r.startDate===iso(date)));
-  const has=relevant.length>0;
-  let html=`<div class="dayhead"><div><div class="label">${label}</div><h2>${fmtDate(date)}</h2></div><span class="status ${has?'alert':'clear'}">${has?'BIJZONDERHEID':'GEEN MELDING'}</span></div><div class="body">`;
-  if(!has){
-    html+=`<div class="clearbox">Geen extra werkzaamheden of uitzonderlijke tijdelijke maatregel aangetroffen.</div>`;
-  } else {
-    relevant.sort((a,b)=>a.startMin-b.startMin).forEach(g=>{
-      const n=noticeText(g,activeBridge);
-      html+=`<article class="notice ${n.cls}"><h3>${n.title}</h3><div class="time">${fmtTime(g.startMin)} - ${fmtTime(g.endMin)}</div><p class="summary">${n.summary}</p><div class="source">Officieel bericht: <a href="${esc(g.source)}" target="_blank" rel="noopener">bekijk PIN/BAS</a></div></article>`;
-    });
-  }
-  html+='</div>';el.innerHTML=html;
-}
-function render(){
-  const now=new Date(),tomorrow=new Date(now);tomorrow.setDate(now.getDate()+1);
-  document.getElementById('bridgeName').textContent=activeBridge;
-  renderDay(document.getElementById('todayCard'),now,'Vandaag',cachedRows);
-  renderDay(document.getElementById('tomorrowCard'),tomorrow,'Morgen',cachedRows);
-  document.getElementById('meta').textContent=`Bron: Havenbedrijf Rotterdam, Port Information Notices. Laatste controle ${pad(now.getHours())}:${pad(now.getMinutes())}. Automatische controle iedere 5 minuten.`;
-}
-async function update(){
-  try{
-    const res=await fetch(`notices.json?ts=${Date.now()}`,{cache:'no-store'});if(!res.ok)throw new Error();
-    cachedRows=await res.json();render();
-  }catch(e){
-    document.getElementById('todayCard').innerHTML='<div class="body"><div class="error">De actuele PIN/BAS-gegevens konden niet worden geladen.</div></div>';
-    document.getElementById('tomorrowCard').innerHTML='';
-  }
-}
-document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{
-  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');activeBridge=btn.dataset.bridge;render();
-}));
-update();setInterval(update,REFRESH);
-</script>
-</body>
-</html>
+const REFRESH=5*60*1000;let activeBridge='Botlekbrug';let cachedRows=[];let longRows=[];
+function pad(n){return String(n).padStart(2,'0')} function iso(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`} function fmtDate(d){return new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(d)} function fmtTime(m){if(m===1440)return '24:00';return `${pad(Math.floor(m/60))}:${pad(m%60)}`} function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function relevantForDay(date){const day=iso(date);return [...cachedRows,...longRows].filter(r=>r.bridge===activeBridge&&day>=r.startDate&&day<=r.endDate)}
+function renderDay(el,date,label){const rows=relevantForDay(date);const has=rows.length>0;let html=`<div class="dayhead"><div><div class="label">${label}</div><h2>${fmtDate(date)}</h2></div><span class="status ${has?'alert':'clear'}">${has?'BIJZONDERHEID':'GEEN MELDING'}</span></div><div class="body">`;
+if(!has){html+=`<div class="clearbox">Geen extra werkzaamheden, langdurige stremming of uitzonderlijke tijdelijke maatregel aangetroffen.</div>`}else{rows.sort((a,b)=>(a.kind==='long-term'?-1:1)-(b.kind==='long-term'?-1:1)||a.startMin-b.startMin).forEach(r=>{const isLong=r.kind==='long-term';const title=r.title||(r.open?'Extra passage of opening mogelijk':'Extra beperking / geen bediening');const time=isLong?`${r.startDate} t/m ${r.endDate}`:`${fmtTime(r.startMin)} - ${fmtTime(r.endMin)}`;const summary=r.summary||`Tijdens dit tijdvak geldt een uitzonderlijke maatregel voor de ${activeBridge}.`;html+=`<article class="notice ${isLong?'long':(r.open?'open':'closed')}"><h3>${esc(title)}</h3><div class="time">${esc(time)}</div>${r.scope?`<p class="scope">${esc(r.scope)}</p>`:''}<p class="summary">${esc(summary)}</p><div class="source">Officiële bron: <a href="${esc(r.source)}" target="_blank" rel="noopener">bekijk bericht</a></div></article>`})} html+='</div>';el.innerHTML=html}
+function render(){const now=new Date(),tomorrow=new Date(now);tomorrow.setDate(now.getDate()+1);document.getElementById('bridgeName').textContent=activeBridge;renderDay(document.getElementById('todayCard'),now,'Vandaag');renderDay(document.getElementById('tomorrowCard'),tomorrow,'Morgen');document.getElementById('meta').textContent=`Bronnen: Havenbedrijf Rotterdam en Rijkswaterstaat. Laatste controle ${pad(now.getHours())}:${pad(now.getMinutes())}. Automatische controle iedere 5 minuten.`}
+async function update(){try{const [a,b]=await Promise.all([fetch(`notices.json?ts=${Date.now()}`,{cache:'no-store'}),fetch(`long_term_notices.json?ts=${Date.now()}`,{cache:'no-store'})]);if(!a.ok||!b.ok)throw new Error();cachedRows=await a.json();longRows=await b.json();render()}catch(e){document.getElementById('todayCard').innerHTML='<div class="body"><div class="error">De actuele gegevens konden niet worden geladen.</div></div>';document.getElementById('tomorrowCard').innerHTML=''}}
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeBridge=btn.dataset.bridge;render()}));update();setInterval(update,REFRESH);
+</script></body></html>
