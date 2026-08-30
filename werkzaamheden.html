@@ -17,7 +17,6 @@
     .bridge-photo-wrap{width:100%;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:#e9eef3;margin-bottom:12px;position:relative;border:1px solid var(--line)}
     .bridge-photo{width:100%;height:100%;object-fit:cover;display:none}
     .bridge-photo-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px;color:var(--muted);font-size:13px;font-weight:bold;line-height:1.35}
-    .bridge-photo-caption{position:absolute;left:0;right:0;bottom:0;background:rgba(23,36,51,.82);color:#fff;padding:7px 9px;font-size:13px;font-weight:bold;display:none}
     .sidebar-title{font-size:13px;font-weight:bold;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:4px 5px 10px}
     .tab{display:block;width:100%;border:0;background:#eef2f6;color:var(--navy);padding:13px 12px;margin:0 0 7px;font-size:15px;font-weight:bold;text-align:left;cursor:pointer;border-radius:9px}
     .tab:hover{background:#dde5ed}.tab.active{background:var(--navy);color:#fff}.tab:last-child{margin-bottom:0}
@@ -38,8 +37,7 @@
   <aside class="sidebar" aria-label="Brug kiezen">
     <div class="bridge-photo-wrap" id="bridgePhotoWrap">
       <img class="bridge-photo" id="bridgePhoto" alt="Gekozen brug">
-      <div class="bridge-photo-placeholder" id="bridgePhotoPlaceholder">Foto van de gekozen brug</div>
-      <div class="bridge-photo-caption" id="bridgePhotoCaption"></div>
+      <div class="bridge-photo-placeholder" id="bridgePhotoPlaceholder">Geen foto beschikbaar</div>
     </div>
     <div class="sidebar-title">Kies een brug</div>
     <button class="tab active" data-bridge="Botlekbrug">Botlekbrug</button>
@@ -72,13 +70,11 @@ function pad(n){return String(n).padStart(2,'0')} function iso(d){return `${d.ge
 function updateBridgePhoto(){
   const img=document.getElementById('bridgePhoto');
   const placeholder=document.getElementById('bridgePhotoPlaceholder');
-  const caption=document.getElementById('bridgePhotoCaption');
   const src=BRIDGE_IMAGES[activeBridge];
-  img.style.display='none';caption.style.display='none';placeholder.style.display='flex';
-  placeholder.textContent=`Foto ${activeBridge}`;
-  img.onload=()=>{img.style.display='block';placeholder.style.display='none';caption.textContent=activeBridge;caption.style.display='block'};
-  img.onerror=()=>{img.style.display='none';caption.style.display='none';placeholder.style.display='flex'};
-  img.alt=activeBridge;img.src=`${src}?v=${Date.now()}`;
+  img.style.display='none';placeholder.style.display='flex';placeholder.textContent='Geen foto beschikbaar';
+  img.onload=()=>{img.style.display='block';placeholder.style.display='none'};
+  img.onerror=()=>{img.style.display='none';placeholder.style.display='flex'};
+  img.alt='Brugfoto';img.src=`${src}?v=${Date.now()}`;
 }
 function relevantForDay(date){const day=iso(date);return [...cachedRows,...longRows].filter(r=>r.bridge===activeBridge&&day>=r.startDate&&day<=r.endDate)}
 function renderDay(el,date,label){const rows=relevantForDay(date);const has=rows.length>0;let html=`<div class="dayhead"><div><div class="label">${label}</div><h2>${fmtDate(date)}</h2></div><span class="status ${has?'alert':'clear'}">${has?'BIJZONDERHEID':'GEEN MELDING'}</span></div><div class="body">`;
