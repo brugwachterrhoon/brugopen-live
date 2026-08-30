@@ -1,0 +1,16 @@
+[
+  {
+    "bridge": "Papendrechtsebrug",
+    "startDate": "2026-06-22",
+    "endDate": "2027-08-31",
+    "startMin": 0,
+    "endMin": 1440,
+    "open": false,
+    "priority": 40,
+    "kind": "long-term",
+    "title": "Langdurige stremming hoge scheepvaart",
+    "scope": "Schepen hoger dan 12,90 m",
+    "summary": "De Papendrechtsebrug is tijdens de renovatie gestremd voor hoge scheepvaart. Vanaf augustus 2026 is onder voorwaarden ongeveer één keer per maand een passage mogelijk. Lage scheepvaart kan meestal onder het vaste deel door.",
+    "source": "https://www.rijkswaterstaat.nl/wegen/projectenoverzicht/n3-renovatie-beweegbare-deel-papendrechtsebrug/planning"
+  }
+]
