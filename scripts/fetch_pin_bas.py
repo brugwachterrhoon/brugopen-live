@@ -15,8 +15,14 @@ TZ = ZoneInfo("Europe/Amsterdam")
 BRIDGES = {
     "botlekbrug": "Botlekbrug",
     "spijkenisserbrug": "Spijkenisserbrug",
-    "alblasserdamsebrug": "Alblasserdamsebrug",
     "papendrechtsebrug": "Papendrechtsebrug",
+    "brug over de noord": "Brug over de Noord",
+    "alblasserdamsebrug": "Brug over de Noord",
+    "calandbrug": "Calandbrug",
+    "van brienenoordbrug": "Brienenoordbrug",
+    "brienenoordbrug": "Brienenoordbrug",
+    "wantijbrug": "Wantijbrug",
+    "hartelbrug": "Hartelbrug",
 }
 MONTHS = {
     "jan":1,"januari":1,"january":1,
@@ -59,7 +65,7 @@ class PageParser(HTMLParser):
 
 
 def fetch(url):
-    req=urllib.request.Request(url, headers={"User-Agent":"Brugopen/1.0 (+https://brugopen-live.onrender.com)"})
+    req=urllib.request.Request(url, headers={"User-Agent":"Brugopen/1.0 (+https://brugwachterrhoon.github.io/brugopen-live/)"})
     with urllib.request.urlopen(req, timeout=25) as r:
         return r.read().decode("utf-8", errors="replace")
 
@@ -85,7 +91,6 @@ def parse_ranges(line, now):
     s=re.sub(r"\s+", " ", s)
     ranges=[]
 
-    # 6 aug 20:00 ... tot vrijdag 7 aug 05:00
     rx_cross=re.compile(rf"(\d{{1,2}})\s+({MONTH_RE}).*?(\d{{1,2}})[.:](\d{{2}}).*?(?:tot|to|-)\s+(?:[a-z]+\s+)?(\d{{1,2}})\s+({MONTH_RE})\s+(\d{{1,2}})[.:](\d{{2}})", re.I)
     for m in rx_cross.finditer(s):
         a=dt_for(m.group(1),m.group(2),m.group(3),m.group(4),now)
@@ -93,7 +98,6 @@ def parse_ranges(line, now):
         if b<a: b=b.replace(year=a.year+1)
         ranges.append((a,b))
 
-    # 7 aug tussen 02:30 en 03:00 / 22 augustus van 07.00 tot 09.00
     rx_same=re.compile(rf"(\d{{1,2}})\s+({MONTH_RE}).*?(\d{{1,2}})[.:](\d{{2}}).*?(?:tot|to|en|and|-)\s+(\d{{1,2}})[.:](\d{{2}})", re.I)
     for m in rx_same.finditer(s):
         a=dt_for(m.group(1),m.group(2),m.group(3),m.group(4),now)
@@ -105,7 +109,7 @@ def parse_ranges(line, now):
 
 def discover_relevant_links():
     found={}
-    for page in range(0,6):
+    for page in range(0,10):
         url=BASE if page==0 else f"{BASE}?page={page}"
         try: p=parse_page(url)
         except Exception as e:
@@ -117,7 +121,7 @@ def discover_relevant_links():
                 full=urljoin(BASE, href)
                 if "/node/" in full or "/pin-" in full:
                     found[full]=text; page_hits+=1
-        if page>1 and page_hits==0: break
+        if page>2 and page_hits==0: break
     return found
 
 
@@ -129,7 +133,6 @@ def bridge_for(text):
 
 
 def make_override(bridge, a, b, is_open, source, priority):
-    # index.html uses one-day minute intervals, so split cross-midnight ranges.
     rows=[]; cur=a
     while cur.date() < b.date():
         rows.append({"bridge":bridge,"startDate":cur.date().isoformat(),"endDate":cur.date().isoformat(),"startMin":cur.hour*60+cur.minute,"endMin":1440,"open":is_open,"priority":priority,"source":source})
@@ -146,7 +149,7 @@ def parse_notice(url,title,now):
     text="\n".join(p.lines)
     bridge=bridge_for(title+"\n"+text)
     if not bridge: return []
-    rows=[]; mode=False  # BAS/PIN restriction defaults to closed
+    rows=[]; mode=False
     for line in p.lines:
         low=line.lower()
         if any(x in low for x in ["passage possible","mogelijkheid van passage","mogelijkheden van passage","tussentijdse opening","intermediate opening"]): mode=True
@@ -164,7 +167,6 @@ def main():
     for url,title in links.items():
         try: rows.extend(parse_notice(url,title,now))
         except Exception as e: print(f"notice failed {url}: {e}")
-    # Keep current/future entries only; deduplicate.
     cutoff=(now.date()-timedelta(days=1)).isoformat()
     unique={}
     for r in rows:
