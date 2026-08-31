@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "bridge": "Brienenoordbrug",
+    "startDate": "2026-08-11",
+    "endDate": "2099-12-31",
+    "startMin": 0,
+    "endMin": 1440,
+    "open": false,
+    "priority": 60,
+    "source": "https://pin.portofrotterdam.com/pin-16525"
+  }
+]
