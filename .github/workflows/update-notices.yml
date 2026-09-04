@@ -23,6 +23,21 @@ jobs:
       - name: Fetch Port Information Notices
         run: python scripts/fetch_pin_bas.py
 
+      - name: Correct Botlekbrug BAS 156/2026 parsing
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('notices.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          data = [r for r in data if not (
+              r.get('bridge') == 'Botlekbrug'
+              and r.get('source') == 'https://pin.portofrotterdam.com/node/16526'
+              and r.get('endDate') == '2099-12-31'
+          )]
+          p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
       - name: Commit changed notices
         run: |
           if git diff --quiet -- notices.json; then
