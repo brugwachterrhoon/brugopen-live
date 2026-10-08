@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-09",
+    "startMin": 150,
+    "endMin": 180,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/pin-16706"
+  }
+]
