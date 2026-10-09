@@ -1,6 +1,76 @@
 [
   {
     "bridge": "Botlekbrug",
+    "startDate": "2026-10-08",
+    "endDate": "2026-10-08",
+    "startMin": 0,
+    "endMin": 300,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-08",
+    "endDate": "2026-10-08",
+    "startMin": 150,
+    "endMin": 180,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-08",
+    "endDate": "2026-10-08",
+    "startMin": 150,
+    "endMin": 180,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-08",
+    "endDate": "2026-10-08",
+    "startMin": 1320,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-09",
+    "startMin": 0,
+    "endMin": 300,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-09",
+    "endDate": "2099-12-31",
+    "startMin": 0,
+    "endMin": 1440,
+    "open": false,
+    "priority": 60,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-09",
+    "startMin": 150,
+    "endMin": 180,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
     "startDate": "2026-10-09",
     "endDate": "2026-10-09",
     "startMin": 150,
@@ -8,5 +78,405 @@
     "open": true,
     "priority": 100,
     "source": "https://pin.portofrotterdam.com/pin-16706"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-09",
+    "startMin": 150,
+    "endMin": 180,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-09",
+    "endDate": "2026-10-09",
+    "startMin": 420,
+    "endMin": 960,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-10",
+    "startMin": 420,
+    "endMin": 960,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-12",
+    "endDate": "2026-10-12",
+    "startMin": 420,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-13",
+    "endDate": "2026-10-13",
+    "startMin": 0,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-13",
+    "endDate": "2026-10-13",
+    "startMin": 240,
+    "endMin": 420,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-13",
+    "endDate": "2026-10-13",
+    "startMin": 240,
+    "endMin": 420,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-14",
+    "endDate": "2026-10-14",
+    "startMin": 420,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-15",
+    "endDate": "2026-10-15",
+    "startMin": 0,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-15",
+    "endDate": "2026-10-15",
+    "startMin": 315,
+    "endMin": 420,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-15",
+    "endDate": "2026-10-15",
+    "startMin": 315,
+    "endMin": 420,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-16",
+    "startMin": 345,
+    "endMin": 420,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-16",
+    "startMin": 345,
+    "endMin": 420,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-16",
+    "startMin": 420,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-19",
+    "endDate": "2026-10-19",
+    "startMin": 420,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-19",
+    "endDate": "2026-10-19",
+    "startMin": 1260,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-19",
+    "endDate": "2026-10-19",
+    "startMin": 1260,
+    "endMin": 1440,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-20",
+    "endDate": "2026-10-20",
+    "startMin": 0,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-20",
+    "endDate": "2026-10-20",
+    "startMin": 0,
+    "endMin": 60,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-20",
+    "endDate": "2026-10-20",
+    "startMin": 0,
+    "endMin": 60,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-21",
+    "endDate": "2026-10-21",
+    "startMin": 420,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-21",
+    "endDate": "2026-10-21",
+    "startMin": 1425,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-21",
+    "endDate": "2026-10-21",
+    "startMin": 1425,
+    "endMin": 1440,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-22",
+    "endDate": "2026-10-22",
+    "startMin": 0,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-22",
+    "endDate": "2026-10-22",
+    "startMin": 0,
+    "endMin": 225,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-22",
+    "endDate": "2026-10-22",
+    "startMin": 0,
+    "endMin": 225,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-23",
+    "startMin": 30,
+    "endMin": 270,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-23",
+    "startMin": 30,
+    "endMin": 270,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-23",
+    "startMin": 420,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-26",
+    "endDate": "2026-10-26",
+    "startMin": 420,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-27",
+    "endDate": "2026-10-27",
+    "startMin": 0,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-27",
+    "endDate": "2026-10-27",
+    "startMin": 120,
+    "endMin": 360,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-27",
+    "endDate": "2026-10-27",
+    "startMin": 120,
+    "endMin": 360,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-28",
+    "endDate": "2026-10-28",
+    "startMin": 420,
+    "endMin": 1440,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-29",
+    "endDate": "2026-10-29",
+    "startMin": 0,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-29",
+    "endDate": "2026-10-29",
+    "startMin": 210,
+    "endMin": 420,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-29",
+    "endDate": "2026-10-29",
+    "startMin": 210,
+    "endMin": 420,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-30",
+    "endDate": "2026-10-30",
+    "startMin": 240,
+    "endMin": 420,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-30",
+    "endDate": "2026-10-30",
+    "startMin": 240,
+    "endMin": 420,
+    "open": true,
+    "priority": 100,
+    "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Botlekbrug",
+    "startDate": "2026-10-30",
+    "endDate": "2026-10-30",
+    "startMin": 420,
+    "endMin": 1140,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16652"
   }
 ]
