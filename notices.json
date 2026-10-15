@@ -20,6 +20,16 @@
     "source": "https://pin.portofrotterdam.com/node/16652"
   },
   {
+    "bridge": "Brienenoordbrug",
+    "startDate": "2026-10-14",
+    "endDate": "2026-10-14",
+    "startMin": 945,
+    "endMin": 1125,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16741"
+  },
+  {
     "bridge": "Botlekbrug",
     "startDate": "2026-10-15",
     "endDate": "2026-10-15",
@@ -168,6 +178,16 @@
     "open": true,
     "priority": 100,
     "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Brienenoordbrug",
+    "startDate": "2026-10-21",
+    "endDate": "2026-10-21",
+    "startMin": 1080,
+    "endMin": 1260,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16741"
   },
   {
     "bridge": "Botlekbrug",
@@ -338,5 +358,35 @@
     "open": false,
     "priority": 50,
     "source": "https://pin.portofrotterdam.com/node/16652"
+  },
+  {
+    "bridge": "Brienenoordbrug",
+    "startDate": "2026-11-03",
+    "endDate": "2026-11-03",
+    "startMin": 1080,
+    "endMin": 1260,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16741"
+  },
+  {
+    "bridge": "Brienenoordbrug",
+    "startDate": "2026-11-24",
+    "endDate": "2026-11-24",
+    "startMin": 1080,
+    "endMin": 1260,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16741"
+  },
+  {
+    "bridge": "Brienenoordbrug",
+    "startDate": "2026-12-08",
+    "endDate": "2026-12-08",
+    "startMin": 945,
+    "endMin": 1125,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16741"
   }
 ]
