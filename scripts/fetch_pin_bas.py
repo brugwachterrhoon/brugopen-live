@@ -173,8 +173,15 @@ def parse_notice(url,title,now):
         for a,b in parse_ranges(line,now):
             rows.extend(make_override(bridge,a,b,mode,url,100 if mode else 50))
 
-    indefinite = any(x in lowtext for x in ["until further notice","tot nader bericht","tot nader order"])
-    restricted = any(x in lowtext for x in ["out of order","geen bediening","no service","gestremd","closed","niet bedienbaar","not be operated","complete obstruction"])
+    # Avoid treating unrelated width restrictions as indefinite full closures.
+    indefinite_markers = ("until further notice", "tot nader bericht", "tot nader order")
+    closure_markers = ("out of order", "geen bediening", "no service", "gestremd", "closed", "niet bedienbaar", "not be operated", "complete obstruction")
+    indefinite = any(
+        any(m in line.lower() for m in indefinite_markers)
+        and any(c in line.lower() for c in closure_markers)
+        for line in p.lines
+    )
+    restricted = indefinite
     if indefinite and restricted:
         start=parse_start_date(p.lines,now) or now
         rows.append({
