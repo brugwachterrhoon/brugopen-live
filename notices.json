@@ -20,6 +20,16 @@
     "source": "https://pin.portofrotterdam.com/node/16776"
   },
   {
+    "bridge": "Brienenoordbrug",
+    "startDate": "2026-11-03",
+    "endDate": "2026-11-03",
+    "startMin": 1080,
+    "endMin": 1260,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16780"
+  },
+  {
     "bridge": "Botlekbrug",
     "startDate": "2026-11-04",
     "endDate": "2026-11-04",
@@ -618,6 +628,16 @@
     "open": true,
     "priority": 100,
     "source": "https://pin.portofrotterdam.com/node/16776"
+  },
+  {
+    "bridge": "Brienenoordbrug",
+    "startDate": "2026-11-24",
+    "endDate": "2026-11-24",
+    "startMin": 1080,
+    "endMin": 1260,
+    "open": false,
+    "priority": 50,
+    "source": "https://pin.portofrotterdam.com/node/16780"
   },
   {
     "bridge": "Botlekbrug",
