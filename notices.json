@@ -7,7 +7,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -17,7 +17,7 @@
     "endMin": 300,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -27,7 +27,7 @@
     "endMin": 150,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -37,7 +37,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -47,7 +47,7 @@
     "endMin": 300,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -57,7 +57,7 @@
     "endMin": 180,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -67,7 +67,7 @@
     "endMin": 1440,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -77,7 +77,7 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -87,7 +87,7 @@
     "endMin": 300,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -97,7 +97,7 @@
     "endMin": 300,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -107,7 +107,7 @@
     "endMin": 180,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -117,7 +117,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -127,7 +127,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -137,7 +137,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -147,7 +147,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -157,7 +157,7 @@
     "endMin": 1440,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -167,7 +167,7 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -177,7 +177,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -187,7 +187,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -197,7 +197,7 @@
     "endMin": 360,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -207,7 +207,7 @@
     "endMin": 1440,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -217,27 +217,27 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
     "startDate": "2026-11-12",
     "endDate": "2026-11-12",
     "startMin": 0,
-    "endMin": 1140,
+    "endMin": 1020,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
     "startDate": "2026-11-12",
     "endDate": "2026-11-12",
     "startMin": 0,
-    "endMin": 1140,
+    "endMin": 1020,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -247,27 +247,7 @@
     "endMin": 420,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
-  },
-  {
-    "bridge": "Botlekbrug",
-    "startDate": "2026-11-13",
-    "endDate": "2026-11-13",
-    "startMin": 420,
-    "endMin": 1140,
-    "open": false,
-    "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
-  },
-  {
-    "bridge": "Botlekbrug",
-    "startDate": "2026-11-13",
-    "endDate": "2026-11-13",
-    "startMin": 420,
-    "endMin": 1140,
-    "open": true,
-    "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -277,27 +257,7 @@
     "endMin": 420,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
-  },
-  {
-    "bridge": "Botlekbrug",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-14",
-    "startMin": 420,
-    "endMin": 1140,
-    "open": false,
-    "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
-  },
-  {
-    "bridge": "Botlekbrug",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-14",
-    "startMin": 420,
-    "endMin": 1140,
-    "open": true,
-    "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -307,7 +267,7 @@
     "endMin": 1440,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -317,7 +277,7 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -327,7 +287,7 @@
     "endMin": 420,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -337,7 +297,7 @@
     "endMin": 420,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -347,7 +307,7 @@
     "endMin": 420,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -357,7 +317,7 @@
     "endMin": 1440,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -367,7 +327,7 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -377,7 +337,7 @@
     "endMin": 1320,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -387,7 +347,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -397,7 +357,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -407,7 +367,7 @@
     "endMin": 1440,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -417,7 +377,7 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -427,7 +387,7 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -437,7 +397,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -447,7 +407,7 @@
     "endMin": 30,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -457,7 +417,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -467,7 +427,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -477,7 +437,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -487,7 +447,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -497,7 +457,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -507,7 +467,7 @@
     "endMin": 1440,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -517,7 +477,7 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -527,7 +487,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -537,7 +497,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -547,7 +507,7 @@
     "endMin": 300,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Brienenoordbrug",
@@ -567,7 +527,7 @@
     "endMin": 1440,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -577,7 +537,7 @@
     "endMin": 1440,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -587,7 +547,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -597,7 +557,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -607,7 +567,7 @@
     "endMin": 375,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -617,7 +577,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -627,7 +587,7 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -637,7 +597,7 @@
     "endMin": 420,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -647,7 +607,7 @@
     "endMin": 1140,
     "open": false,
     "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   },
   {
     "bridge": "Botlekbrug",
@@ -657,6 +617,6 @@
     "endMin": 1140,
     "open": true,
     "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16776"
+    "source": "https://pin.portofrotterdam.com/node/16812"
   }
 ]
