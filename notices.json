@@ -1,26 +1,6 @@
 [
   {
     "bridge": "Botlekbrug",
-    "startDate": "2026-11-17",
-    "endDate": "2026-11-17",
-    "startMin": 0,
-    "endMin": 1140,
-    "open": false,
-    "priority": 50,
-    "source": "https://pin.portofrotterdam.com/node/16812"
-  },
-  {
-    "bridge": "Botlekbrug",
-    "startDate": "2026-11-17",
-    "endDate": "2026-11-17",
-    "startMin": 0,
-    "endMin": 1140,
-    "open": true,
-    "priority": 100,
-    "source": "https://pin.portofrotterdam.com/node/16812"
-  },
-  {
-    "bridge": "Botlekbrug",
     "startDate": "2026-11-18",
     "endDate": "2026-11-18",
     "startMin": 420,
